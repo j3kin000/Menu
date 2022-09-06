@@ -67,7 +67,6 @@ export const addItem = (item, navigate) => async (dispatch) => {
       cost: item.cost,
       sizes: item.sizes,
     });
-    navigate();
   } catch (error) {}
 };
 export const updateItem = (item) => async (dispatch) => {
