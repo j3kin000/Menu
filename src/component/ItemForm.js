@@ -21,6 +21,7 @@ const ItemForm = ({ item }) => {
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isDeleted, setIsDeleted] = useState(false);
   const [postData, setPostData] = useState({
     category: "breakfast",
     name: "",
@@ -44,6 +45,10 @@ const ItemForm = ({ item }) => {
       dispatch(addItem(postData), () => navigate("/home"));
       setMessage("Added Succesfully");
     }
+    if (isDeleted) {
+      dispatch(deleteItem(item, () => setMessage("Deleted Succesfully")));
+    }
+    setIsDeleted(false);
   };
   return (
     <div
@@ -260,13 +265,9 @@ const ItemForm = ({ item }) => {
             </button>
             {item ? (
               <button
-                type="button"
+                type="submit"
                 className="btn btn-danger mt-3 px-5 "
-                onClick={() =>
-                  dispatch(
-                    deleteItem(item, () => setMessage("Deleted Succesfully"))
-                  )
-                }
+                onClick={() => setIsDeleted(true)}
               >
                 Delete
               </button>
