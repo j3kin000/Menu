@@ -85,14 +85,13 @@ export const updateItem = (item) => async (dispatch) => {
 
 export const deleteItem = (item, message) => async (dispatch) => {
   try {
-    console.log("delete");
     const db = getDatabase();
     const itemList = ref(db);
     get(child(itemList, "menu/" + item.key)).then((snapshot) => {
       if (snapshot.exists()) {
         remove(ref(db, "menu/" + item.key));
       } else {
-        console.log("blee");
+        console.log("error");
       }
     });
     message();
