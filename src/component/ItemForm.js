@@ -263,7 +263,9 @@ const ItemForm = ({ item }) => {
                 type="button"
                 className="btn btn-danger mt-3 px-5 "
                 onClick={() =>
-                  dispatch(deleteItem(item, () => navigate("/home")))
+                  dispatch(
+                    deleteItem(item, () => setMessage("Deleted Succesfully"))
+                  )
                 }
               >
                 Delete

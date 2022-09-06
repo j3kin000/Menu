@@ -84,7 +84,7 @@ export const updateItem = (item) => async (dispatch) => {
   } catch (error) {}
 };
 
-export const deleteItem = (item, navigate) => async (dispatch) => {
+export const deleteItem = (item, message) => async (dispatch) => {
   try {
     console.log("delete");
     const db = getDatabase();
@@ -96,6 +96,6 @@ export const deleteItem = (item, navigate) => async (dispatch) => {
         console.log("blee");
       }
     });
-    navigate();
+    message();
   } catch (error) {}
 };
